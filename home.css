@@ -1,0 +1,46 @@
+body {
+  font-family: sans-serif;
+  width: 100%;
+}
+/*estilos barra de navegacion*/
+
+.menu {
+  display: inline-block;
+  list-style: none;
+  padding: 0;
+  background: #ffa78f;
+  text-align: right;
+  font-size: 20px;
+  width: 100%;
+
+  margin: auto;
+}
+
+.menu li {
+  display: inline-block;
+}
+
+.menu li a {
+  text-decoration: none;
+  padding: 20px;
+  display: block;
+}
+
+.menu li a:hover {
+  background: #fdf47f;
+  color: #1a2537;
+}
+
+.usuario {
+  position: fixed;
+  left: 0;
+  color: #1a2537;
+  padding: 20px;
+  display: block;
+}
+
+/*estilos tablas*/
+
+.card-header {
+  background-color: #fdf47f !important;
+}

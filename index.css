@@ -1,0 +1,73 @@
+/*
+#FFA78F
+#FDF47F
+*/
+body {
+  background: url(Desktop\ -\ 1.png);
+  background-size: cover;
+  background-attachment: fixed;
+}
+.formulario-inicio {
+  font-family: sans-serif;
+  background-color: #fff;
+  width: 30vw;
+  margin-right: auto;
+  margin-top: 150px;
+  margin-left: auto;
+  padding: 15px;
+  border-radius: 5%;
+  box-sizing: border-box;
+}
+
+.formulario-inicio h1 {
+  margin-top: 40px;
+  margin-bottom: 40px;
+  text-align: center;
+  font-size: 2rem;
+}
+
+.contenedor {
+  width: 100%;
+}
+
+input[type="email"],
+input[type="password"] {
+  font-size: 20px;
+  width: 82%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border: none;
+}
+
+.formulario-inicio *:valid {
+  border-color: #a7e7ff;
+}
+.formulario-inicio *:invalid {
+  border-color: #fd3132;
+}
+
+.input-contenedor {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  border: 1px solid #aaa;
+}
+
+.icon {
+  display: inline;
+  min-width: 50px;
+}
+
+.button {
+  border: none;
+  width: 100%;
+  color: #000;
+  background-color: #fdf47f;
+  font-size: 20px;
+  padding: 15px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: cadetblue;
+}
