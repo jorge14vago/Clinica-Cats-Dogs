@@ -4,7 +4,7 @@
         exit();
     }
 
-    include_once 'conexion.php';
+    include_once 'config/conexion.php';
     $numero_empleado = $_GET['numero_empleado'];
 
     $sentencia = $bd->prepare("select * from usuarios where numero_empleado= ?;");
@@ -21,7 +21,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <link rel="stylesheet" href="editarUsuario.css">
+    <link rel="stylesheet" href="css/editarUsuario.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
 
     <!-- Bootstrap CSS v5.0.2 -->
@@ -37,7 +37,7 @@
             <div class="card-header" style="background-color: #fdf47f;">
                 Editar Usuario.
               </div>
-            <form class="p-4 form-registro" method="POST" action="editarUsuarioProceso.php">
+            <form class="p-4 form-registro" method="POST" action="config/editarUsuarioProceso.php">
               <div class="mb-3">
                 <label class="form-label">Nombre: </label>
                 <input type="text" class="form-control" name="txtNombre" value="<?php echo $usuario->nombre?>" autofocus required>
@@ -52,25 +52,39 @@
               </div>
               <div class="mb-3">
                 <label class="form-label">Tipo :</label>
-                <input type="text" class="form-control" name="txtTipo" value="<?php echo $usuario->tipo?>"  autofocus required>
+                  <select name="  txtTipo" class="form-control" autofocus require>
+                    <?php
+                      if ($usuario->tipo == "Doctor") {
+                    ?>
+                      <option value="Doctor" selected>Doctor</option>
+                      <option value="Enfermero">Enfermero</option>
+                    <?php
+                      }else{
+                      ?>
+                      <option value="Doctor">Doctor</option>
+                      <option value="Enfermero" selected>Enfermero</option>
+                    <?php
+                      }
+                      ?>
+                  </select>
               </div>
               <div class="mb-3">
                 <label class="form-label">Correo: </label>
                 <input type="email" class="form-control" name="txtCorreo" value="<?php echo $usuario->correo?>"  autofocus required>
               </div>
-              <div class="mb-3">
+              <div class="mb-2">
                 <label class="form-label">Contraseña: </label>
                 <input type="password" class="form-control" name="txtPassword" value="<?php echo $usuario->contra?>"  autofocus required>
               </div>
-               <div id="passwordHelpBlock" class="form-text py-3">
+               <div id="passwordHelpBlock" class="form-text py-1">
                     Su contraseña debe tener al menos 8 caracteres, letras, numeros, mayusculas y minusculas.
                   </div>
               <div class="d-grid">
                 <input type="hidden" name="numero_empleado" value="<?php echo $usuario->numero_empleado?>">
-                <input type="submit" class="btn btn-primary" value="Registrar">
+                <input type="submit" class="btn btn-primary" value="Editar">
               </div>
-              <div class="text-center">
-                  <a href="usuarios.php" class="mt-3 btn link-light btn-primary stretched-link">Cancelar</a>
+              <div class="text-center d-grid">
+                  <a href="usuarios.php" class="mt-3 btn link-light btn-primary">Cancelar</a>
               </div>
             </form>
           </div>

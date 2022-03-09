@@ -1,6 +1,6 @@
 <?php 
     if(!isset($_GET['num_de_cita'])){
-        header('Location: home.php?mensaje=error');
+        header('Location: ../home.php?mensaje=error');
         exit();
     }
 
@@ -11,9 +11,9 @@
     $resultado = $sentencia->execute([$num_de_cita]);
 
     if ($resultado === TRUE) {
-        header('Location: home.php?mensaje=eliminado');
+        header('Location: ../home.php?mensaje=eliminado');
     } else {
-        header('Location: home.php?mensaje=error');
+        header('Location: ../home.php?mensaje=error');
     }
     
 ?>

@@ -9,7 +9,7 @@
 ?>
 <!--CONEXION PARA VALIDAR EL TIPO DE USUARIO-->
 <?php
-  include_once "conexion.php";
+  include_once "config/conexion.php";
 
   $sentencia = $bd ->prepare("SELECT * FROM usuarios where correo = ?;");
   $sentencia->execute([$correo]);
@@ -17,7 +17,7 @@
 ?>
 <!--CONEXION PARA LA TABLA CITAS  DEL DIA-->
 <?php
-  include_once "conexion.php";
+  include_once "config/conexion.php";
 
   date_default_timezone_set("America/Mazatlan");
   $fecha_actual = date("Y-m-d");
@@ -28,7 +28,7 @@
 ?>
 <!--CONEXION PARA LA TABLA DE TODAS LAS CITAS-->
 <?php
-  include_once "conexion.php";
+  include_once "config/conexion.php";
 
   $sentencia = $bd ->query("SELECT * FROM citas;");
   $todas_citas = $sentencia ->fetchAll(PDO::FETCH_OBJ);
@@ -41,7 +41,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-     <link rel="stylesheet" href="home.css">
+     <link rel="stylesheet" href="css/home.css">
     <!-- Bootstrap CSS v5.0.2 -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"  integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <!--cdn iconos-->
@@ -53,15 +53,15 @@
     <!--VALIDACION DEL TIPO DE USUARIO Y BARRA DE NAVEGACION-->
     <?php
        foreach ($tipo_usuario as $usuario) {
-         if($usuario->tipo == "doctor"){
+         if($usuario->tipo == "Doctor"){
     ?>
     <nav>
       <div>
         <ul class="menu">
           <li class="usuario" ><span class="text-white">Bienvenido <?php echo $usuario->nombre?> </span></li>
-          <li><a href="agendarCita.php" class="link-light">Agendar Citas</a></li>
+          <li><a href="home.php#fecha" class="link-light">Agendar Citas</a></li>
           <li><a href="usuarios.php"class="link-light">Usuarios</a></li>
-          <li><a href="salir.php" class="link-light">Cerrar Sesion</a></li>
+          <li><a href="config/salir.php" class="link-light">Cerrar Sesion</a></li>
         </ul>
       </div>
     </nav>
@@ -72,8 +72,8 @@
       <div>
         <ul class="menu">
           <li class="usuario" class="link-light"><span class="text-white">Bienvenido <?php echo $usuario->nombre?> </span></li>
-          <li><a href="agendarCita.php" class="link-light">Agendar Citas</a></li>
-          <li><a href="salir.php" class="link-light">Cerrar Sesion</a></li>
+          <li><a href="home.php#fecha" class="link-light">Agendar Citas</a></li>
+          <li><a href="config/salir.php" class="link-light">Cerrar Sesion</a></li>
         </ul>
       </div>
     </nav>
@@ -81,6 +81,20 @@
        }
       }
     ?>
+      <form action="agendarCita.php" method="post" class="fecha p-2 bg-info text-white" id="fecha">
+            <div class="mb-3">
+              <label for="" class="form-label">FECHA:</label>
+              <input type="date" class="form-control" name="fecha" autofocus require>
+            </div>
+            <div class="d-grid">
+                <input type="hidden" name="oculto" value="1">
+                <input type="submit" class="btn btn-primary" value="Agendar">
+              </div> <div class="text-center d-grid">
+                <a href="home.php" class="mt-3 btn link-light btn-primary">Cancelar</a>
+              </div>   
+          </form>
+          
+    
     <!--CONTENEDOR DE LAS TABLAS-->
       <div class="mt-5">
         <div class="row justify-content-center">
@@ -179,8 +193,8 @@
                       <td><?php echo $dato->nombre_del_dueno  ?></td>
                       <td><?php echo $dato->nombre_de_mascota  ?></td>
                       <td><?php echo $dato->num_telefono  ?></td>
-                      <td><a class="text-success" href="editar.php?num_de_cita=<?php echo $dato->num_de_cita  ?>"><i class="bi bi-pencil-square"></i></a></td>
-                      <td><a class="text-danger" href="eliminar.php?num_de_cita=<?php echo $dato->num_de_cita  ?>"><i class="bi bi-trash"></i></a></td>
+                      <td><a href="editarCita.php?num_de_cita=<?php echo $dato->num_de_cita  ?>" class="text-success"><i class="bi bi-pencil-square"></i></a></td>
+                      <td><a href="config/eliminarCita.php?num_de_cita=<?php echo $dato->num_de_cita  ?>" class="text-danger"><i class="bi bi-trash"></i></a></td>
                     </tr>
                     <?php
                       }
@@ -188,7 +202,7 @@
                   </tbody>
                 </table> 
                 <div class="text-center">
-                  <a href="home.php?mensaje=mostrar-todo" class="btn link-light btn-primary stretched-link">Mostrar todas las citas</a>
+                  <a href="home.php?mensaje=mostrar-todo" class="btn link-light btn-primary">Mostrar todas las citas</a>
                 </div>
               </div>
             </div>
@@ -226,8 +240,8 @@
                       <td><?php echo $dato->nombre_del_dueno  ?></td>
                       <td><?php echo $dato->nombre_de_mascota  ?></td>
                       <td><?php echo $dato->num_telefono  ?></td>
-                      <td><a class="text-success" href="editar.php?num_de_cita=<?php echo $dato->num_de_cita  ?>"><i class="bi bi-pencil-square"></i></a></td>
-                      <td><a class="text-danger" href="eliminar.php?num_de_cita=<?php echo $dato->num_de_cita  ?>"><i class="bi bi-trash"></i></a></td>
+                      <td><a class="text-success" href="editarCita.php?num_de_cita=<?php echo $dato->num_de_cita  ?>"><i class="bi bi-pencil-square"></i></a></td>
+                      <td><a class="text-danger" href="config/eliminarCita.php?num_de_cita=<?php echo $dato->num_de_cita  ?>"><i class="bi bi-trash"></i></a></td>
                     </tr>
                     <?php
                       }
@@ -235,7 +249,7 @@
                   </tbody>
                 </table> 
                 <div class="text-center">
-                  <a href="home.php" class="btn link-light btn-primary stretched-link">Cerrar</a>
+                  <a href="home.php" class="btn link-light btn-primary">Cerrar</a>
                 </div>
               </div>
             </div>

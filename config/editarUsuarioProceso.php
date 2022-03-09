@@ -1,11 +1,11 @@
 <?php
   if(empty($_POST["numero_empleado"]) || empty($_POST["txtNombre"]) || empty($_POST["txtTelefono"]) || empty($_POST["txtDireccion"]) || empty($_POST["txtTipo"]) || empty($_POST["txtCorreo"]) || empty($_POST["txtPassword"])){
-        header('Location: usuarios.php?mensaje=falta');
+        header('Location: ../usuarios.php?mensaje=falta');
         exit();
     }
     print_r($_POST);
     if(!isset($_POST['numero_empleado'])){
-        header('Location: usuarios.php?mensaje=error');
+        header('Location: ../usuarios.php?mensaje=error');
     }
 
     include 'conexion.php';
@@ -21,9 +21,9 @@
     $resultado = $sentencia->execute([$nombre,$telefono,$direccion,$tipo,$correo,$contra,$numero_empleado]);
 
     if ($resultado === TRUE) {
-        header('Location: usuarios.php?mensaje=editado');
+        header('Location: ../usuarios.php?mensaje=editado');
     } else {
-        header('Location: usuarios.php?mensaje=error');
+        header('Location: ../usuarios.php?mensaje=error');
         exit();
     }
     

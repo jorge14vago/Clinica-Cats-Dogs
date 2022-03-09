@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="stylesheet" href="css/normalize.css">
-  <link rel="stylesheet" href="index.css">
+  <link rel="stylesheet" href="css/index.css">
  
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -27,7 +27,7 @@
   <?php 
     }
   ?>
-  <form action="validarlogin.php" id="formulario" class="formulario-inicio" method="post">
+  <form action="config/validarlogin.php" id="formulario" class="formulario-inicio" method="post">
     <h1>Inicio de sesion</h1>
     <!--Nombre de usuario-->
     <div class="contenedor">

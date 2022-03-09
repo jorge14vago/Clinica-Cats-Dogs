@@ -1,7 +1,7 @@
 <?php
     
     if(empty($_POST["oculto"]) || empty($_POST["txtNombre"]) || empty($_POST["txtTelefono"]) || empty($_POST["txtDireccion"]) || empty($_POST["txtTipo"]) || empty($_POST["txtCorreo"]) || empty($_POST["txtPassword"])){
-        header('Location: usuarios.php?mensaje=falta');
+        header('Location: ../usuarios.php?mensaje=falta');
         exit();
     }
 
@@ -18,9 +18,9 @@
     $resultado = $sentencia->execute([$nombre,$telefono,$direccion,$tipo,$correo,$contra]);
 
     if ($resultado === TRUE) {
-        header('Location: usuarios.php?mensaje=registrado');
+        header('Location: ../usuarios.php?mensaje=registrado');
     } else {
-        header('Location: usuarios.php?mensaje=error');
+        header('Location: ../usuarios.php?mensaje=error');
         exit();
     }
     

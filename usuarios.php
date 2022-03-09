@@ -1,5 +1,5 @@
 <?php
-include_once "conexion.php";
+include_once "config/conexion.php";
 
 $sentencia = $bd ->query("SELECT * FROM usuarios");
 $usuarios = $sentencia ->fetchAll(PDO::FETCH_OBJ);
@@ -16,7 +16,7 @@ $usuarios = $sentencia ->fetchAll(PDO::FETCH_OBJ);
 
     <!--estilos css-->
     <link rel="stylesheet" href="css/normalize.css">
-    <link rel="stylesheet" href="usuarios.css">
+    <link rel="stylesheet" href="css/usuarios.css">
 
     <!-- Bootstrap CSS v5.0.2 -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"  integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
@@ -34,7 +34,7 @@ $usuarios = $sentencia ->fetchAll(PDO::FETCH_OBJ);
         <ul class="menu">
           <li><a href="home.php" class="link-light">Regresar</a></li>
           <li><a href="registrarNuevoUsuario.php" class="link-light">Registrar Usuario</a></li>
-          <li><a href="salir.php" class="link-light">Cerrar Sesion</a></li>
+          <li><a href="config/salir.php" class="link-light">Cerrar Sesion</a></li>
         </ul>
       </div>
     </nav>
@@ -139,7 +139,7 @@ $usuarios = $sentencia ->fetchAll(PDO::FETCH_OBJ);
                     <td><?php echo $dato->tipo  ?></td>
                     <td><?php echo $dato->correo ?></td>
                     <td><a class="text-success" href="editarUsuario.php?numero_empleado=<?php echo $dato->numero_empleado  ?>"><i class="bi bi-pencil-square"></i></a></td>
-                    <td><a class="text-danger" href="eliminarUsuario.php?numero_empleado=<?php echo $dato->numero_empleado  ?>"><i class="bi bi-trash"></i></a></td>
+                    <td><a class="text-danger" href="config/eliminarUsuario.php?numero_empleado=<?php echo $dato->numero_empleado  ?>"><i class="bi bi-trash"></i></a></td>
                   </tr>
                   <?php
                   }

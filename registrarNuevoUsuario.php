@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="es">
   <head>
     <title>CATS&DOGS</title>
     <!-- Required meta tags -->
@@ -19,7 +19,7 @@
               Registrar Usuario.
             </div>
             <!--FORMULARIO DE REGISTRO DE USUARIOS-->
-              <form class="p-4" method="POST" action="registrarUsuarios.php">
+              <form class="p-4" method="POST" action="config/registrarUsuarios.php">
                 <div class="mb-3">
                 <label class="form-label">Nombre: </label>
                 <input type="text" class="form-control" name="txtNombre" autofocus required>
@@ -34,7 +34,11 @@
                 </div>
                 <div class="mb-3">
                   <label class="form-label">Tipo :</label>
-                  <input type="text" class="form-control" name="txtTipo" autofocus required>
+                   <select name="  txtTipo"class="form-control" autofocus require>
+                     <option value=""></option>
+                    <option value="Doctor">Doctor</option>
+                    <option value="Enfermero">Enfermero</option>
+                  </select>
                 </div>
                 <div class="mb-3">
                   <label class="form-label">Correo: </label>
@@ -51,8 +55,8 @@
                   <input type="hidden" name="oculto" value="1">
                   <input type="submit" class="btn btn-primary" value="Registrar">
                 </div>
-                <div class="text-center">
-                  <a href="usuarios.php" class="mt-3 btn link-light btn-primary stretched-link">Cancelar</a>
+                <div class="text-center d-grid">
+                  <a href="usuarios.php" class="mt-3 btn link-light btn-primary">Cancelar</a>
                 </div>
               </form>
            </div>

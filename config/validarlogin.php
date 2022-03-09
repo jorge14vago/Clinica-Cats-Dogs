@@ -11,8 +11,8 @@ $array = mysqli_fetch_array($resultado);
 
 if($array['contar'] > 0) {
   $_SESSION['correo'] = $correo;
-  header("location: home.php");
+  header("location: ../home.php");
 }else{
- header("location: index.php?mensaje=error");
+ header("location: ../index.php?mensaje=error");
 }
 ?>

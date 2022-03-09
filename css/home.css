@@ -44,3 +44,17 @@ body {
 .card-header {
   background-color: #fdf47f !important;
 }
+
+/* estilos ventana modal de fecha para agenar cita*/
+
+.fecha {
+  display: none;
+  position: fixed;
+  top: 70px;
+  right: 265px;
+  z-index: 999;
+}
+
+#fecha:target {
+  display: block;
+}
